@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150117220454) do
+ActiveRecord::Schema.define(version: 20150117221110) do
 
   create_table "maintenance_items", force: :cascade do |t|
     t.integer  "vehicle_id"
@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(version: 20150117220454) do
 
   add_index "maintenance_items", ["maintenance_type_id"], name: "index_maintenance_items_on_maintenance_type_id"
   add_index "maintenance_items", ["vehicle_id"], name: "index_maintenance_items_on_vehicle_id"
+
+  create_table "maintenance_receipts", force: :cascade do |t|
+    t.integer  "maintenance_item_id"
+    t.text     "note"
+    t.string   "image"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "maintenance_receipts", ["maintenance_item_id"], name: "index_maintenance_receipts_on_maintenance_item_id"
 
   create_table "maintenance_types", force: :cascade do |t|
     t.string   "name"
