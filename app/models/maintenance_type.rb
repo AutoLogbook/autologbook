@@ -1,5 +1,5 @@
 class MaintenanceType < ActiveRecord::Base
-  belongs_to :maintenance_item
+  has_many :maintenance_items
 
   validates :name, presence: true, uniqueness: true
   validates :slug, presence: true, uniqueness: true
