@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150117215800) do
+ActiveRecord::Schema.define(version: 20150117220454) do
+
+  create_table "maintenance_items", force: :cascade do |t|
+    t.integer  "vehicle_id"
+    t.integer  "maintenance_type_id"
+    t.text     "summary"
+    t.date     "performed_date"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "maintenance_items", ["maintenance_type_id"], name: "index_maintenance_items_on_maintenance_type_id"
+  add_index "maintenance_items", ["vehicle_id"], name: "index_maintenance_items_on_vehicle_id"
 
   create_table "maintenance_types", force: :cascade do |t|
     t.string   "name"
