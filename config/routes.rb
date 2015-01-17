@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get 'api/v1/maintenance/:vehicle_id' => 'api_v1#get_maintenance_for_vehicle'
+  get 'api/v1/vehicle/:vehicle_id' => 'api_v1#get_vehicle'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
