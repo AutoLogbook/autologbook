@@ -4,6 +4,6 @@ class MaintenanceItem < ActiveRecord::Base
   has_many :maintenance_receipts
 
   validates :vehicle, presence: true
-  validates :maintenance_type, presence: true
+  validates :maintenance_type_id, presence: true
   validates :performed_date, presence: true
 end
