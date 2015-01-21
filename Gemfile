@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.0'
 gem 'devise'
+gem 'activeadmin', github: 'activeadmin'
+gem 'inherited_resources', github: 'josevalim/inherited_resources', branch: 'rails-4-2'
 
 gem 'sqlite3'
 
