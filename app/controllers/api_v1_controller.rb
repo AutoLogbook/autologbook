@@ -5,7 +5,10 @@ class ApiV1Controller < ActionController::Base
   end
 
   def get_maintenance_for_vehicle
-    @maintenance_items = MaintenanceItem.where(vehicle: Vehicle.find(params[:vehicle_id]))
+    vehicle = Vehicle.find(params[:vehicle_id])
+    maintenance = MaintenanceService.new(vehicle)
+
+    @maintenance_items = maintenance.get_all
     render 'api/v1/get_maintenance_for_vehicle'
   end
 end
