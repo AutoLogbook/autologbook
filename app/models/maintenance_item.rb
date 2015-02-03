@@ -1,9 +1,6 @@
 class MaintenanceItem < ActiveRecord::Base
-  belongs_to :vehicle
-  has_one :maintenance_type
-  has_many :maintenance_receipts
+  has_one :type, class_name: 'MaintenanceType',
+                 foreign_key: 'maintenance_item_id'
 
-  validates :vehicle, presence: true
-  validates :maintenance_type_id, presence: true
-  validates :performed_date, presence: true
+  belongs_to :vehicle, class_name: 'Vehicle'
 end
