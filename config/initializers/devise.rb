@@ -5,7 +5,7 @@ Devise.setup do |config|
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
   # config.secret_key = '90a92fe16b022cc650064c44808b22ceddcd0a5015a0de6f9cf49555713fcd37e93d3161a50b0acb2b247eaf1b5a5fe2742ff013b3f490973190a47068339b57'
-  unless Rails.application.secrets?
+  unless Rails.application.secrets
     config.secret_key = 'ProperlyConfigureSecrets.ymlYouNerd'
   end
 
