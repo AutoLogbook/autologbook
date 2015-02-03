@@ -4,11 +4,11 @@ class MaintenanceService
   end
 
   def get_all
-    MaintenanceItem.where(vehicle: @vehicle)
+    MaintenanceItem.where vehicle: @vehicle
   end
 
   def get_all_by_type(type)
-    MaintenanceItem.where vehicle: @vehicle, maintenance_type_id: type.id
+    MaintenanceItem.where vehicle: @vehicle, type: type
   end
 
   def get_type_by_slug(slug)
