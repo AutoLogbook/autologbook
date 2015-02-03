@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150203020408) do
+ActiveRecord::Schema.define(version: 20150203033923) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -46,35 +46,6 @@ ActiveRecord::Schema.define(version: 20150203020408) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
-  create_table "maintenance_items", force: :cascade do |t|
-    t.integer  "vehicle_id"
-    t.integer  "maintenance_type_id"
-    t.text     "summary"
-    t.date     "performed_date"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-  end
-
-  add_index "maintenance_items", ["maintenance_type_id"], name: "index_maintenance_items_on_maintenance_type_id"
-  add_index "maintenance_items", ["vehicle_id"], name: "index_maintenance_items_on_vehicle_id"
-
-  create_table "maintenance_receipts", force: :cascade do |t|
-    t.integer  "maintenance_item_id"
-    t.text     "note"
-    t.string   "image"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-  end
-
-  add_index "maintenance_receipts", ["maintenance_item_id"], name: "index_maintenance_receipts_on_maintenance_item_id"
-
-  create_table "maintenance_types", force: :cascade do |t|
-    t.string   "name"
-    t.string   "slug"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -92,21 +63,5 @@ ActiveRecord::Schema.define(version: 20150203020408) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-
-  create_table "vehicles", force: :cascade do |t|
-    t.string   "title"
-    t.string   "vin"
-    t.date     "purchase_date"
-    t.date     "sale_date"
-    t.integer  "year"
-    t.string   "make"
-    t.string   "model"
-    t.string   "bodystyle"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.integer  "user_id"
-  end
-
-  add_index "vehicles", ["user_id"], name: "index_vehicles_on_user_id"
 
 end
