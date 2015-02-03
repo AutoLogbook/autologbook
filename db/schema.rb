@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150203035730) do
+ActiveRecord::Schema.define(version: 20150203040303) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -50,9 +50,12 @@ ActiveRecord::Schema.define(version: 20150203035730) do
     t.string   "title"
     t.text     "summary"
     t.date     "performed_date"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "maintenance_type_id"
   end
+
+  add_index "maintenance_items", ["maintenance_type_id"], name: "index_maintenance_items_on_maintenance_type_id"
 
   create_table "maintenance_types", force: :cascade do |t|
     t.string   "title"
